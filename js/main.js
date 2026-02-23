@@ -1,3 +1,12 @@
+// js/main.js
+
+// Pastikan supabase sudah terdefinisi
+if (typeof supabase === 'undefined') {
+    console.error('Supabase client tidak ditemukan. Pastikan config.js sudah di-load dengan benar.');
+}
+
+// Gunakan supabase dari window object
+const supabaseClient = window.supabase || supabase;
 // ==================== GLOBAL VARIABLES ====================
 let currentPage = 1;
 const itemsPerPage = 12;

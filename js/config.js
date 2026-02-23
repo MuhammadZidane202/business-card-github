@@ -1,11 +1,12 @@
-// js/supabase.js
+// js/config.js
 
-// Inisialisasi Supabase
+// Konfigurasi Supabase
 const SUPABASE_URL = 'https://qwlgdlgpcoajbdxyscsr.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_hcqjcxDlcNT-tHU93cmTPQ_QS8Apih1';
 
-// Buat supabase client
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// Inisialisasi Supabase client dengan benar
+const { createClient } = supabase;
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// Export ke global
+// Export supabase client
 window.supabase = supabase;

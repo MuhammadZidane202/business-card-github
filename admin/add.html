@@ -4,114 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Kartu Nama - Business Card</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
             <a href="../index.html" class="navbar-brand">
                 <i class="fas fa-id-card-alt"></i>
                 Business Card
+                <span>Pariwisata</span>
             </a>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div style="max-width: 800px; margin: 0 auto; background: white; padding: 2rem; border-radius: 10px;">
-            <h2 style="margin-bottom: 2rem;">Tambah Kartu Nama Baru</h2>
-            
-            <form id="addForm">
-                <div class="form-group">
-                    <label class="form-label">Kategori <span style="color: red;">*</span></label>
-                    <select class="form-select" id="category_id" required>
-                        <option value="">Pilih Kategori</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Nama Perusahaan <span style="color: red;">*</span></label>
-                    <input type="text" class="form-control" id="company_name" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Tagline</label>
-                    <input type="text" class="form-control" id="tagline">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Alamat <span style="color: red;">*</span></label>
-                    <textarea class="form-control" id="address" rows="3" required></textarea>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+    <main>
+        <div class="container">
+            <div class="form-container">
+                <h2 class="form-title">
+                    <i class="fas fa-plus-circle" style="color: var(--secondary);"></i>
+                    Tambah Kartu Nama Baru
+                </h2>
+                
+                <form id="addForm">
                     <div class="form-group">
-                        <label class="form-label">Telepon</label>
-                        <input type="text" class="form-control" id="phone">
+                        <label class="form-label">Kategori <span style="color: red;">*</span></label>
+                        <select class="form-control" id="category_id" required>
+                            <option value="">Pilih Kategori</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Mobile</label>
-                        <input type="text" class="form-control" id="mobile">
-                    </div>
-                </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div class="form-group">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email">
+                        <label class="form-label">Nama Perusahaan <span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" id="company_name" required>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Website</label>
-                        <input type="url" class="form-control" id="website" placeholder="https://">
-                    </div>
-                </div>
 
-                <h3 style="margin: 2rem 0 1rem;">Contact Person</h3>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div class="form-group">
-                        <label class="form-label">Nama Contact Person</label>
-                        <input type="text" class="form-control" id="contact_person">
+                        <label class="form-label">Tagline</label>
+                        <input type="text" class="form-control" id="tagline" placeholder="Slogan atau motto perusahaan">
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Jabatan</label>
-                        <input type="text" class="form-control" id="contact_position">
-                    </div>
-                </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div class="form-group">
-                        <label class="form-label">Telepon Contact Person</label>
-                        <input type="text" class="form-control" id="contact_phone">
+                        <label class="form-label">Alamat <span style="color: red;">*</span></label>
+                        <textarea class="form-control" id="address" rows="3" required></textarea>
                     </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Telepon</label>
+                            <input type="text" class="form-control" id="phone" placeholder="021-1234567">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Mobile</label>
+                            <input type="text" class="form-control" id="mobile" placeholder="0812-3456-7890">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="info@perusahaan.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Website</label>
+                            <input type="url" class="form-control" id="website" placeholder="https://perusahaan.com">
+                        </div>
+                    </div>
+
+                    <h3 style="margin: 30px 0 20px; color: var(--dark);">
+                        <i class="fas fa-user-tie" style="color: var(--secondary);"></i>
+                        Contact Person
+                    </h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Nama Contact Person</label>
+                            <input type="text" class="form-control" id="contact_person">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Jabatan</label>
+                            <input type="text" class="form-control" id="contact_position" placeholder="Manager, Direktur, dll">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Telepon Contact Person</label>
+                            <input type="text" class="form-control" id="contact_phone">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Contact Person</label>
+                            <input type="email" class="form-control" id="contact_email">
+                        </div>
+                    </div>
+
                     <div class="form-group">
-                        <label class="form-label">Email Contact Person</label>
-                        <input type="email" class="form-control" id="contact_email">
+                        <label class="form-label">Deskripsi</label>
+                        <textarea class="form-control" id="description" rows="4" placeholder="Deskripsi perusahaan..."></textarea>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="form-label">Deskripsi</label>
-                    <textarea class="form-control" id="description" rows="4"></textarea>
-                </div>
-
-                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                    <button type="submit" class="btn btn-primary" style="flex: 1;">Simpan</button>
-                    <a href="../index.html" class="btn" style="flex: 1; background: #95a5a6; color: white; text-align: center;">Batal</a>
-                </div>
-            </form>
+                    <div style="display: flex; gap: 15px; margin-top: 30px;">
+                        <button type="submit" class="btn btn-primary" style="flex: 2;">
+                            <i class="fas fa-save"></i> Simpan Kartu Nama
+                        </button>
+                        <a href="../index.html" class="btn" style="flex: 1; background: #95a5a6; color: white; text-align: center;">
+                            <i class="fas fa-times"></i> Batal
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    </main>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Business Card Pariwisata. Powered by Supabase.</p>
+        <div class="container">
+            <p>&copy; 2024 Business Card Pariwisata. Powered by Supabase.</p>
+        </div>
     </footer>
 
-    <!-- Script -->
     <script src="../js/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async function() {

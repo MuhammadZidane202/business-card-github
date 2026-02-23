@@ -5,5 +5,4 @@ const SUPABASE_CONFIG = {
 };
 
 // Inisialisasi Supabase client
-const { createClient } = supabase;
-const supabaseClient = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+const supabase = supabaseCreateClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);

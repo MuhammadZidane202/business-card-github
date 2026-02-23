@@ -13,7 +13,25 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+    // Inisialisasi Supabase langsung di sini
+    const SUPABASE_URL = 'https://qwlgdlgpcoajbdxyscsr.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_hcqjcxDlcNT-tHU93cmTPQ_QS8Apih1';
     
+    // Buat supabase client
+    const { createClient } = supabase;
+    const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    
+    // Export ke global
+    window.supabaseClient = supabaseClient;
+</script>
+
+<!-- Main JS -->
+<script src="js/main.js"></script>
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>

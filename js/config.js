@@ -1,8 +1,11 @@
-// Konfigurasi Supabase
-const SUPABASE_CONFIG = {
-    url: 'https://qwlgdlgpcoajbdxyscsr.supabase.co',
-    anonKey: 'sb_publishable_hcqjcxDlcNT-tHU93cmTPQ_QS8Apih1'
-};
+// js/supabase.js
 
-// Inisialisasi Supabase client
-const supabase = supabaseCreateClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+// Inisialisasi Supabase
+const SUPABASE_URL = 'https://qwlgdlgpcoajbdxyscsr.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_hcqjcxDlcNT-tHU93cmTPQ_QS8Apih1';
+
+// Buat supabase client
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// Export ke global
+window.supabase = supabase;

@@ -141,45 +141,40 @@
                 select.innerHTML += `<option value="${cat.id}">${cat.category_name}</option>`;
             });
         }
-        
-        // Handle form submit
-        document.getElementById('addForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
+       <script>
+// Ganti bagian submit form dengan ini
+document.getElementById('addForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    try {
+        // Gunakan RPC call ke Supabase function
+        const { data, error } = await supabaseClient
+            .rpc('insert_business_card', {
+                p_category_id: document.getElementById('category_id').value,
+                p_company_name: document.getElementById('company_name').value,
+                p_tagline: document.getElementById('tagline').value,
+                p_address: document.getElementById('address').value,
+                p_phone: document.getElementById('phone').value,
+                p_mobile: document.getElementById('mobile').value,
+                p_email: document.getElementById('email').value,
+                p_website: document.getElementById('website').value,
+                p_contact_person: document.getElementById('contact_person').value,
+                p_contact_position: document.getElementById('contact_position').value,
+                p_contact_phone: document.getElementById('contact_phone').value,
+                p_contact_email: document.getElementById('contact_email').value,
+                p_description: document.getElementById('description').value
+            });
             
-            const data = {
-                category_id: document.getElementById('category_id').value,
-                company_name: document.getElementById('company_name').value,
-                tagline: document.getElementById('tagline').value,
-                address: document.getElementById('address').value,
-                phone: document.getElementById('phone').value,
-                mobile: document.getElementById('mobile').value,
-                email: document.getElementById('email').value,
-                website: document.getElementById('website').value,
-                contact_person: document.getElementById('contact_person').value,
-                contact_position: document.getElementById('contact_position').value,
-                contact_phone: document.getElementById('contact_phone').value,
-                contact_email: document.getElementById('contact_email').value,
-                description: document.getElementById('description').value,
-                is_active: true,
-                views: 0
-            };
-            
-            try {
-                const { data: result, error } = await supabaseClient
-                    .from('business_cards')
-                    .insert([data])
-                    .select();
-                    
-                if (error) throw error;
-                
-                alert('Kartu nama berhasil ditambahkan!');
-                window.location.href = `../view.html?id=${result[0].id}`;
-                
-            } catch (error) {
-                alert('Error: ' + error.message);
-            }
-        });
+        if (error) throw error;
         
+        alert('Kartu nama berhasil ditambahkan!');
+        window.location.href = `../view.html?id=${data.id}`;
+        
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+});
+</script>
         // Load categories on page load
         document.addEventListener('DOMContentLoaded', loadCategories);
     </script>
